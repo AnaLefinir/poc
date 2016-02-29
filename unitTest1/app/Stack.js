@@ -5,7 +5,8 @@ function Stack() {
     function pushin(item) {
         collection.push(item);
         console.log('pushed!');
-    };
+        return item;
+    }
     
     function pop() {
         if (collection.length === 0) {
@@ -30,8 +31,10 @@ function Stack() {
         "push": pushin,
         "pop": pop,
         "clear": clear,
-        "length": length
+        "length": length,
+        'collection' : collection
     };
 }
 
 module.exports = Stack;
+

@@ -1,6 +1,7 @@
 var assert = require('assert');
 var Stack = require('../app/stack.js');
 
+
 describe('Array', function() {
   describe('#indexOf()', function () {
       
