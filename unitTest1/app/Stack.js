@@ -19,10 +19,10 @@ function Stack() {
     }
     
     function clear() {
-        collection = [];
+        collection.splice(0,collection.length);
         console.log('cleared!');
     }
-    
+
     function length() {
         return collection.length;
     }
@@ -38,3 +38,14 @@ function Stack() {
 
 module.exports = Stack;
 
+var stack = new Stack();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+console.log(stack.collection);
+stack.pop();
+console.log(stack.collection);
+console.log(stack.collection.length);
+stack.clear();
+console.log(stack.collection);
+console.log(stack.collection.length);
