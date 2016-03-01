@@ -21,7 +21,7 @@ describe('Array', function() {
 });
 
 describe('Stack', function() {
-   it('should hava 1 item after pushing 1 item', function() {
+   it('should have 1 item after pushing 1 item', function() {
        // Arrange
        var item = {};
        var stack = new Stack();
