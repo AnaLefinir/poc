@@ -14,9 +14,9 @@ function Queue() {
         if (collection.length === 0) {
             return null;
         }else{
-             var popedItem = collection.pop();
-             console.log('poped!');
-             return popedItem;
+             var shiftedItem = collection.shift();
+             console.log('shifted!');
+             return shiftedItem;
      }
     }
     */
@@ -25,15 +25,15 @@ function Queue() {
         if (collection.length === 0){
             return null;
         }else{
-            var take = collection.slice(0, 1);
-            console.log("remove first item!")
+            var take = collection.splice(0, 1);
+            console.log("remove first item!");
             return take;
         }
 
     }
 
     function clear() {
-        collection = [];
+        collection.splice(0,collection.length);
         console.log('cleared!');
     }
 
