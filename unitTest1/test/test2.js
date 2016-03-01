@@ -13,7 +13,7 @@ describe('Queue', function(){
         var expectedLength = 1;
 
         // Act
-        queue.push(item);
+        queue.enqueue(item);
         length = queue.length();
 
         // Assert
@@ -41,7 +41,7 @@ describe('Queue', function(){
             var expectedItem = null;
 
             // Act
-            item = queue.remove();
+            item = queue.dequeue();
 
             // Assert
             assert.strictEqual(item, expectedItem);
@@ -51,16 +51,17 @@ describe('Queue', function(){
     it('have many items, when remove, remove the first item', function() {
         //Arrange
         var queue = new Queue();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
-        var itemExpected = queue.collection[0];
+        var item = {};
+        var itemExpected = item;
         var itemRemove;
         //Act
-        itemRemove = queue.remove();
+        queue.enqueue(itemExpected);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        itemRemove = queue.dequeue();
 
         //Assert
-        assert.equal(itemRemove, itemExpected);
+        assert.equal(item, itemRemove);
     });
 
     it('add a item, remove item, have length 0', function() {
@@ -70,8 +71,8 @@ describe('Queue', function(){
         var lengthExpeted = 0;
         var length;
         //Act
-        queue.push(item);
-        queue.remove();
+        queue.enqueue(item);
+        queue.dequeue();
         length = queue.length();
         //Assert
         assert.equal(length, lengthExpeted);
@@ -80,9 +81,9 @@ describe('Queue', function(){
     it('have many items, when clear, have 0 items', function() {
         //Arrange
         var queue = new Queue();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
         var lengthExpeted = 0;
         var length;
         //Act
@@ -96,9 +97,9 @@ describe('Queue', function(){
     it('have x number of items, when use length, return x', function() {
         //Arrange
         var queue = new Queue();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
         var lengthExpeted = 3;
         var lengthReturn;
         //Act
@@ -111,7 +112,7 @@ describe('Queue', function(){
     it('have 1 items, when use length, return 1', function() {
         //Arrange
         var queue = new Queue();
-        queue.push(1);
+        queue.enqueue(1);
         var lengthExpeted = 1;
         var lengthReturn;
         //Act
@@ -123,13 +124,13 @@ describe('Queue', function(){
 
     it('have x number of items, if use remove, when call length, return x-1 ', function() {
         var queue = new Queue();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
         var lengthExpeted = 2;
         var lengthReturn;
         //Act
-        queue.remove();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.dequeue();
         lengthReturn = queue.length();
         //Assert
         assert.strictEqual(lengthExpeted, lengthReturn);

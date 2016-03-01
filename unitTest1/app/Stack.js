@@ -4,7 +4,6 @@ function Stack() {
     
     function pushin(item) {
         collection.push(item);
-        console.log('pushed!');
         return item;
     }
     
@@ -13,14 +12,12 @@ function Stack() {
             return null;
         } else {
             var popedItem = collection.pop();
-            console.log('poped!');
             return popedItem;
         }
     }
     
     function clear() {
         collection.splice(0,collection.length);
-        console.log('cleared!');
     }
 
     function length() {

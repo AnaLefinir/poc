@@ -7,34 +7,21 @@ function Queue() {
 
     function pushin(item) {
         collection.push(item);
-        console.log('pushed!');
     }
-
-    /* function shift() {
-        if (collection.length === 0) {
-            return null;
-        }else{
-             var shiftedItem = collection.shift();
-             console.log('shifted!');
-             return shiftedItem;
-     }
-    }
-    */
 
     function remove (){
         if (collection.length === 0){
             return null;
         }else{
-            var take = collection.splice(0, 1);
-            console.log("remove first item!");
+            var take = collection.shift();
             return take;
+
         }
 
     }
 
     function clear() {
         collection.splice(0,collection.length);
-        console.log('cleared!');
     }
 
     function length() {
@@ -42,12 +29,15 @@ function Queue() {
     }
 
     return {
-        "push": pushin,
-        "remove": remove,
+        "enqueue": pushin,
+        "dequeue": remove,
         "clear": clear,
-        "length": length,
-        'collection' : collection
+        "length": length
     };
 }
 
 module.exports = Queue;
+
+var queue = new Queue();
+queue.enqueue({});
+queue.dequeue();
