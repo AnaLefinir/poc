@@ -18,13 +18,8 @@ app.get('/puchun/:type', function (req, res) {
     } else if (type === 'gordo') {
         message = 'hiss!';
     } else {
-        res.writeHead(404, {
-            'X-STATUS': 'palurdo...',
-            'Content-Type': 'text/xml'
-        });
-        res.write('<puchun>pero que palurdo</puchun>');
-        res.end();
-        return;
+        notFound(res);
+        return ;
     }
 
     fs.readFile('./puchunresponse.json', function (err, data) {
@@ -40,3 +35,12 @@ app.get('/puchun/:type', function (req, res) {
 
 });
 app.listen(8080);
+
+function notFound(res){
+    res.writeHead(404, {
+        'X-STATUS': 'palurdo...',
+        'Content-Type': 'text/xml'
+    });
+    res.write('<puchun>pero que palurdo</puchun>');
+    res.end();
+}
