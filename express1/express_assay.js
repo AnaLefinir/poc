@@ -32,3 +32,4 @@ app.get('/puchun/:type', function(req, res){
 });
 
 
+app.listen(8080);
